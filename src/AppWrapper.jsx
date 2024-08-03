@@ -17,6 +17,7 @@ import Cart from './Components/Cart.jsx'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Color from './Components/Utils/Color.js'
+import Address from './Components/Address.jsx'
 
 export const userContext = createContext()
 
@@ -44,12 +45,12 @@ const AppWrapper = () => {
                 setUser(null);
             }
         });
-
-
+        
+        
         return () => unsubscribe();
     }, []);
-
-
+    
+    
     useEffect(() => {
         if (user) {
             fetch("http://localhost:3000/getCart")
@@ -145,6 +146,7 @@ const AppWrapper = () => {
             product
         }
 
+
         const response = await fetch("http://localhost:3000/addToCart", {
             method: "POST",
 
@@ -156,7 +158,7 @@ const AppWrapper = () => {
         })
 
         const data = await response.json();
-        if(data === "Product added to cart succesfully") {window.location.reload()}
+        // if(data === "Product added to cart succesfully") {window.location.reload()}
     }
 
     function isAddToCart(id) {
@@ -186,17 +188,62 @@ const AppWrapper = () => {
             body: JSON.stringify(obj)
         }).then((response)=>{
             return response.json()
-        }).then((result)=>{
-            if(result === "Product removed from cart"){window.location.reload()}
         })
 
     }
 
-    console.log(Color.primary);
+    function handleClearCart(userId){
+
+        fetch("http://localhost:3000/removeCart", {
+            method: "DELETE",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({ userId })
+        }).then((response)=>{
+            return response.json()
+        })
+
+    }
+
+    function handleSetAddress(e,address){
+        e.preventDefault();
+
+        let data = {
+            address,
+            userId: user.uid,
+            userEmail: user.email
+        };
+
+        fetch("http://localhost:3000/setAddress", {
+            method : "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body : JSON.stringify(data)
+        })
+        .then((response)=>{
+            return response.json()
+        })
+        .then((result)=>{
+            // console.log(result);
+            if(result == "address succesfully added"){
+                alert("Order Confirmed succesfully")
+                navigate("/")
+                handleClearCart(user.uid)
+            }
+        })
+    }
+
+    // console.log(Color.primary);
 
     return (
-        <userContext.Provider value={{ handleSubmit, handleLogin, handleAddproduct, HandleAddToCart, isAddToCart, HandleRemoveFromCart, cartItem }}>
-            <div className={`h-20 px-10 bg-[${Color.primary}] text-white flex justify-between items-center sticky top-0 z-50`}>
+        <userContext.Provider value={{ handleSubmit, handleLogin, handleAddproduct, HandleAddToCart, isAddToCart, HandleRemoveFromCart, cartItem, handleSetAddress }}>
+            <div className={`h-20 px-10 text-white flex justify-between items-center sticky top-0 z-50`} style={{backgroundColor:Color.primary}}>
                 <a href="/"><h1 className='text-3xl  font-bold mt-4'>Erfan</h1></a>
                 <ul className='text-xl flex gap-10 '>
 
@@ -217,7 +264,7 @@ const AppWrapper = () => {
                     </div>
                 </ul>
             </div>
-            <div className={`h-16 border-t-2 border-black px-10 bg-[${Color.secondary}] pt-4 `}>
+            <div className={`h-16 border-t-2 border-black px-10 bg-[${Color.secondary}] pt-4 `} style={{backgroundColor:Color.secondary}}>
                 <ul className='text-xl flex justify-evenly '>
                     <a className='li' href="/"><li>Home</li></a>
                     <a className='li' href="/products"><li>Products</li></a>
@@ -239,6 +286,7 @@ const AppWrapper = () => {
                 <Route path='/admin' element={<Signup />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/admin/erfan' element={<Admin />} />
+                <Route path='/address' element={<Address />} />
             </Routes>
         </userContext.Provider>
     )

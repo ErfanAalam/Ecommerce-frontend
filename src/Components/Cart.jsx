@@ -29,7 +29,7 @@ const Cart = () => {
                 [id]: prevQuantities[id] - 1
             }));
             HandleRemoveFromCart(e, id);
-        }else {
+        } else {
             // If quantity reaches 0, remove the item from the cart
             setQuantities(prevQuantities => {
                 const newQuantities = { ...prevQuantities };
@@ -93,8 +93,10 @@ const Cart = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <hr className='border-black' />
-                    {/* <p>Sub Total : {sum + (sum*18)/100 + 209}</p> */}
-                    <p>Sub Total : {sum + 199.99}</p>
+                    <div className='flex justify-evenly items-center'>
+                        <p>Sub Total : {sum + 199.99}</p>
+                        <a href="/address"><button className='rounded-lg p-2 bg-[#55585b]'>Confirm Order</button></a>
+                    </div>
                 </div>
             </div>
         </div>

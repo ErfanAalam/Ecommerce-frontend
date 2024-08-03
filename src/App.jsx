@@ -34,7 +34,7 @@ function App() {
       <div className='container py-10 p-2 flex justify-between gap-10 items-center flex-wrap'>
         {
           prodcuts.map((product, index) => {
-            return <div key={index} className={`p-10 text-center bg-[${Color.cards}] rounded-lg shadow-md shadow-black flex flex-col items-center gap-6`}>
+            return <div key={index} className={`p-10 text-center bg-[${Color.cards}] rounded-lg shadow-md shadow-black flex flex-col items-center gap-6`} style={{backgroundColor:Color.cards}}>
               <div className='w-[220px] h-[200px] overflow-hidden flex justify-center '>
                 <Link to={`/product/${product.id}`} >
                   <img src={product.file} alt="oops" className='mix-blend-multiply w-full' />
