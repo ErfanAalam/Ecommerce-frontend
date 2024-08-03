@@ -30,7 +30,7 @@ const Products = () => {
       <div className='container py-10 p-2 flex justify-between gap-10 items-center flex-wrap'>
         {
           prodcuts.map((product, index) => {
-            return  <div key={index} className={`p-10 text-center bg-[${Color.cards}] rounded-lg shadow-md shadow-black flex flex-col items-center gap-6`}>
+            return  <div key={index} className={`p-10 text-center rounded-lg shadow-md shadow-black flex flex-col items-center gap-6`} style={{backgroundColor:Color.cards}}>
                 <div className='w-[220px] h-[200px] overflow-hidden flex justify-center '>
                   <Link to={`/product/${product.id}`} >
                     <img src={product.file} alt="oops" className='mix-blend-multiply' />
@@ -38,7 +38,7 @@ const Products = () => {
                 </div>
                 <h1>Title :{product.title}</h1>
                 <h1> Price: ₹{product.price}</h1>
-                <h3 className='rounded-lg p-2 bg-[#55585b]'>
+                <h3 className='rounded-lg p-2 text-white' style={{backgroundColor:Color.button}}>
                   {
                   isAddToCart(product.id) ?
                     <Link

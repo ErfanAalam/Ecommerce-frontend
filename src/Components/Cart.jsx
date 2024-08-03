@@ -57,12 +57,18 @@ const Cart = () => {
 
 
 
-    return (
+    return (<>
+            <h1 className='text-center text-2xl font-bold my-4'>
+                {
+                    cartItem.length == 0 ? "Cart is empty" : "Your Cart"
+                }
+                
+                </h1>
         <div className='flex'>
             <div className='w-[60%]'>
                 {
                     cartItem.map((product, index) => {
-                        return <div key={index} className={`relative p-10 m-20 text-center  h-96 bg-[${Color.cards}] rounded-lg shadow-md shadow-black flex items-center gap-10`}>
+                        return <div key={index} className={`relative p-10 m-20 text-center h-96 rounded-lg shadow-md shadow-black flex items-center gap-10`} style={{backgroundColor:Color.cards}}>
                             <div className='w-[350px] h-[280px] flex justify-center '>
                                 <img src={product.file} alt="oops" width={"450px"} className='mix-blend-multiply' />
                             </div>
@@ -84,7 +90,7 @@ const Cart = () => {
                     })
                 }
             </div>
-            <div className='p-10 m-20 w-[30%] h-96 bg-[#B6C7AA] flex flex-col justify-between sticky top-24 rounded-lg shadow-md shadow-black '>
+            <div className='p-10 m-20 w-[30%] h-96 bg-[#151515] text-white flex flex-col justify-between sticky top-24 rounded-lg shadow-md shadow-black '>
                 <div className='flex flex-col gap-10'>
                     <p>Total item in cart : {cartItem.length}</p>
                     <p>Total MRP : {sum}</p>
@@ -95,11 +101,12 @@ const Cart = () => {
                     <hr className='border-black' />
                     <div className='flex justify-evenly items-center'>
                         <p>Sub Total : {sum + 199.99}</p>
-                        <a href="/address"><button className='rounded-lg p-2 bg-[#55585b]'>Confirm Order</button></a>
+                        <a href="/address"><button className='rounded-lg p-2 ' style={{backgroundColor:Color.button}}>Confirm Order</button></a>
                     </div>
                 </div>
             </div>
         </div>
+    </>
     )
 }
 

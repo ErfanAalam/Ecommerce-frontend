@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../App.css'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import Color from './Utils/Color';
 
 const ImageSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,7 +22,7 @@ const ImageSlider = ({ images }) => {
 
   return (
     <div className="slider">
-      <button className="prev" onClick={prevSlide}><ArrowBackIosIcon /></button>
+      <button className="prev flex items-center justify-center p-2 pr-0" onClick={prevSlide} style={{backgroundColor:Color.button}}><ArrowBackIosIcon /></button>
       <div className="slider-images">
         {images.map((image, index) => (
           <img
@@ -30,11 +31,10 @@ const ImageSlider = ({ images }) => {
             alt={`Slide ${index}`}
             className={`slide ${index === currentIndex ? 'active' : ''}`}
             style={{ display: index === currentIndex ? 'block' : 'none' }}
-            // width={"300px"}
           />
         ))}
       </div>
-      <button className="next" onClick={nextSlide}><ArrowForwardIosIcon /></button>
+      <button className="next p-2" onClick={nextSlide} style={{backgroundColor:Color.button}}><ArrowForwardIosIcon /></button>
     </div>
   );
 };

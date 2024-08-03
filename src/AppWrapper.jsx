@@ -18,6 +18,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Color from './Components/Utils/Color.js'
 import Address from './Components/Address.jsx'
+import NotAdmin from './Components/NotAdmin.jsx'
 
 export const userContext = createContext()
 
@@ -285,7 +286,7 @@ const AppWrapper = () => {
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/admin' element={<Signup />} />
                 <Route path='/cart' element={<Cart />} />
-                <Route path='/admin/erfan' element={<Admin />} />
+                <Route path='/admin/erfan' element={user?.uid === adminUid ? <Admin /> : <NotAdmin />} />
                 <Route path='/address' element={<Address />} />
             </Routes>
         </userContext.Provider>

@@ -42,7 +42,7 @@ function App() {
               </div>
               <h1>Title :{product.title}</h1>
               <h1> Price: ₹{product.price}</h1>
-              <h3 className='rounded-lg p-2 bg-[#55585b]'>
+              <h3 className='rounded-lg p-2 text-white' style={{backgroundColor:Color.button}}>
                 {
                   isAddToCart(product.id) ?
                     <Link

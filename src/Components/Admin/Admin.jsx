@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { userContext } from '../../AppWrapper'
+import Color from '../Utils/Color'
 
 
 
@@ -54,8 +55,8 @@ const Admin = () => {
 
     return (
         <div className='my-4 flex flex-col items-center'>
-            <form action="" onSubmit={(e) => handleUpload(e)} method='POST' encType='multipart/form-data' className='text-white border-2  flex flex-col justify-between border-[#B6C7AA] p-10 bg-[#B6C7AA] rounded-lg shadow-black shadow-xl'>
-                <h1 className='text-white text-center text-4xl'>Add Product</h1>
+            <form action="" onSubmit={(e) => handleUpload(e)} method='POST' encType='multipart/form-data' className=' border-2  flex flex-col justify-between border-[#B6C7AA] p-10 bg-[#B7C9F2] rounded-lg shadow-black shadow-xl'>
+                <h1 className=' text-center text-4xl'>Add Product</h1>
                 <div className='mt-4'>
 
                     <div className='flex flex-col mb-6'>
@@ -94,7 +95,7 @@ const Admin = () => {
                             onChange={(e) => setPrice(e.target.value)} />
                     </div>
                 </div>
-                <div className='flex justify-center'><button type='submit' className='p-2 w-32 text-xl text-black bg-white rounded-lg'>Submit</button></div>
+                <div className='flex justify-center'><button type='submit' className='p-2 w-32 text-xl text-white rounded-lg' style={{backgroundColor:Color.button}}>Submit</button></div>
             </form>
         </div>
     )

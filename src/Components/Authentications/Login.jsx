@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { userContext } from '../../AppWrapper'
+import Color from '../Utils/Color'
 
 const Login = () => {
 
@@ -11,9 +12,9 @@ const Login = () => {
 
 
   return (
-    <div className='flex justify-center mt-20'>
-      <form action="" method='post' onSubmit={(e) => handleSubmit(e, name, email, password)} encType="multipart/form-data" className='text-white border-2 h-[500px] flex flex-col justify-between border-[#B6C7AA] p-10 bg-[#B6C7AA] rounded-lg shadow-black shadow-2xl'>
-        <h1 className='text-white text-center text-2xl'>Register New your account</h1>
+    <div className='flex justify-center m-10'>
+      <form action="" method='post' onSubmit={(e) => handleSubmit(e, name, email, password)} encType="multipart/form-data" className=' border-2 h-[500px] flex flex-col justify-between border-[#B6C7AA] p-10 bg-[#B7C9F2] rounded-lg shadow-black shadow-2xl'>
+        <h1 className=' text-center text-2xl'>Register New your account</h1>
         <div>
           <div className='flex flex-col mb-6'>
             <label htmlFor="name">Name</label>
@@ -34,11 +35,11 @@ const Login = () => {
         </div>
 
         <div className="flex justify-between items-center">
-          <button type="submit" className="bg-white text-[#BB9AB1] font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300">
+          <button type="submit" className="text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300" style={{backgroundColor:Color.button}}>
             Register
           </button>
-          <a href="/signup" className="text-white underline hover:text-gray-200 transition duration-300">
-            Log In Here
+          <a href="/signup" className=" underline text-gray-700 hover:text-gray-900 transition duration-300">
+            Aleardy an account, Log In
           </a>
         </div>
       </form>
