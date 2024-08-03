@@ -66,7 +66,7 @@ const AppWrapper = () => {
 
                 });
         }
-    }, [user]);
+    }, [user,cartItem]);
 
 
     const handleLogout = async () => {

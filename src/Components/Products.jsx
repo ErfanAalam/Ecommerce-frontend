@@ -17,12 +17,10 @@ const Products = () => {
         return response.json()
       }).then((result) => {
         setproducts(result)
-        // console.log(result);
       })
 
   }, [])
 
-  // console.log(cartItem);
 
   return (
     <>
@@ -39,8 +37,7 @@ const Products = () => {
                 <h1>Title :{product.title}</h1>
                 <h1> Price: ₹{product.price}</h1>
                 <h3 className='rounded-lg p-2 text-white' style={{backgroundColor:Color.button}}>
-                  {
-                  isAddToCart(product.id) ?
+                  {isAddToCart(product.id) ?
                     <Link
                       className='cart'
                       onClick={(e) => HandleRemoveFromCart(e, product.id)}
