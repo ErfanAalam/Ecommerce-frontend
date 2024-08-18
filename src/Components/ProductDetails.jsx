@@ -31,6 +31,7 @@ const ProductDetails = () => {
                     <h1>Title :{product.title}</h1>
                     <h1> Price: ₹{product.price}</h1>
                     <p>Desc : {product.desc}</p>
+                    <p>Category : {product.category}</p>
                     <h3 className='rounded-lg p-2 bg-[#55585b]'>
                         {isAddToCart(product.id) ?
                             <Link

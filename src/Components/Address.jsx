@@ -42,36 +42,36 @@ const Address = () => {
         <div className='p-10'>
             <h1 className='text-2xl text-center py-4'> Enter Your Address and details for process order</h1>
             <form action="" className='flex flex-col gap-4 p-10 w-96 m-auto bg-[#B7C9F2] rounded-md' onSubmit={(e) => handleAddress(e)}>
-                <h1 className='text-center text-2xl'>Your Address</h1>
+                <h1 className='text-center text-2xl'>Your Address </h1>
                 <div className='flex flex-col'>
-                    <label htmlFor="name">Enter your name</label>
+                    <label htmlFor="name">Enter your name *</label>
                     <input className='rounded-md' type="text" id='name' value={name} onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div className='flex flex-col'>
-                    <label htmlFor="phone">Enter your phone</label>
+                    <label htmlFor="phone">Enter your phone *</label>
                     <input className='rounded-md' type="text" id='phone' value={phone} onChange={(e) => setPhone(e.target.value)}  required />
                 </div>
                 <div className='flex flex-col'>
-                    <label htmlFor="address">Enter your address</label>
+                    <label htmlFor="address">Enter your address *</label>
                     <textarea type="text" id='address' className='rounded-md' value={address} onChange={(e) => SetAddress(e.target.value)}  required />
                 </div>
                 <div className='flex gap-6'>
                     <div className='flex flex-col w-[45%] '>
-                        <label htmlFor="country">Enter your country</label>
+                        <label htmlFor="country">Enter country*</label>
                         <input className='rounded-md' type="text" id='country' value={country} onChange={(e) => Setcountry(e.target.value)}  required />
                     </div>
                     <div className='flex flex-col w-[45%]'>
-                        <label htmlFor="state">Enter your state</label>
+                        <label htmlFor="state">Enter state *</label>
                         <input className='rounded-md' type="text" id='state' value={state} onChange={(e) => setState(e.target.value)}  required />
                     </div>
                 </div>
                <div className="flex gap-6">
                <div className='flex flex-col w-[45%]'>
-                    <label htmlFor="city">Enter your city</label>
+                    <label htmlFor="city">Enter city *</label>
                     <input className='rounded-md' type="text" id='city' value={city} onChange={(e) => setCity(e.target.value)}  required />
                 </div>
                 <div className='flex flex-col w-[45%]'>
-                    <label htmlFor="zip">Enter your zip</label>
+                    <label htmlFor="zip">Enter zip code *</label>
                     <input className='rounded-md' type="text" id='zip' value={zip} onChange={(e) => SetZip(e.target.value)}  required />
                 </div>
                </div>

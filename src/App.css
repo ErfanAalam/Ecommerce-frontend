@@ -49,10 +49,10 @@
   }
   
   .slider-images {
-    display: flex;
+    /* display: flex; */
     transition: transform 0.5s ease-in-out;
     /* width: 1400px; */
-    height: 700px;
+    /* height: 700px; */
   }
   
   .slide {

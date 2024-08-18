@@ -11,6 +11,8 @@ const Admin = () => {
     const [title, setTitle] = useState("")
     const [desc, setDesc] = useState("")
     const [price, setPrice] = useState("")
+    const [quantity, setQuantity] = useState("")
+    const [category, setCategory] = useState("")
 
     const { handleAddproduct } = useContext(userContext)
 
@@ -40,7 +42,9 @@ const Admin = () => {
                 file: url,
                 title,
                 desc,
-                price
+                price,
+                quantity,
+                category
             };
 
 
@@ -50,6 +54,8 @@ const Admin = () => {
             setTitle("")
             setDesc("")
             setPrice("")
+            setPrice("")
+            setCategory("")
     }
 
 
@@ -93,6 +99,20 @@ const Admin = () => {
                             className="p-3 rounded-lg border text-black border-[#BB9AB1] focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)} />
+                    </div>
+                    <div className='flex flex-col mb-6'>
+                        <label htmlFor="quantity">Quantity of product</label>
+                        <input type="text" name="" id="quantity"
+                            className="p-3 rounded-lg border text-black border-[#BB9AB1] focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                            value={quantity}
+                            onChange={(e) => setQuantity(e.target.value)} />
+                    </div>
+                    <div className='flex flex-col mb-6'>
+                        <label htmlFor="category">Category of product</label>
+                        <input type="text" name="" id="category"
+                            className="p-3 rounded-lg border text-black border-[#BB9AB1] focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)} />
                     </div>
                 </div>
                 <div className='flex justify-center'><button type='submit' className='p-2 w-32 text-xl text-white rounded-lg' style={{backgroundColor:Color.button}}>Submit</button></div>

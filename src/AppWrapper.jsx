@@ -46,12 +46,12 @@ const AppWrapper = () => {
                 setUser(null);
             }
         });
-        
-        
+
+
         return () => unsubscribe();
     }, []);
-    
-    
+
+
     useEffect(() => {
         if (user) {
             fetch("http://localhost:3000/getCart")
@@ -66,7 +66,7 @@ const AppWrapper = () => {
 
                 });
         }
-    }, [user,cartItem]);
+    }, [user, cartItem]);
 
 
     const handleLogout = async () => {
@@ -98,9 +98,9 @@ const AppWrapper = () => {
             .then((userCrendentials) => {
                 const user = userCrendentials.user
                 console.log(userCrendentials);
-                if(user.uid == adminUid){
+                if (user.uid == adminUid) {
                     navigate("/admin/erfan")
-                }else{
+                } else {
                     navigate("/")
                 }
                 username = user.displayName
@@ -159,7 +159,6 @@ const AppWrapper = () => {
         })
 
         const data = await response.json();
-        // if(data === "Product added to cart succesfully") {window.location.reload()}
     }
 
     function isAddToCart(id) {
@@ -187,13 +186,13 @@ const AppWrapper = () => {
             },
 
             body: JSON.stringify(obj)
-        }).then((response)=>{
+        }).then((response) => {
             return response.json()
         })
 
     }
 
-    function handleClearCart(userId){
+    function handleClearCart(userId) {
 
         fetch("http://localhost:3000/removeCart", {
             method: "DELETE",
@@ -203,13 +202,13 @@ const AppWrapper = () => {
             },
 
             body: JSON.stringify({ userId })
-        }).then((response)=>{
+        }).then((response) => {
             return response.json()
         })
 
     }
 
-    function handleSetAddress(e,address){
+    function handleSetAddress(e, address) {
         e.preventDefault();
 
         let data = {
@@ -219,39 +218,39 @@ const AppWrapper = () => {
         };
 
         fetch("http://localhost:3000/setAddress", {
-            method : "POST",
+            method: "POST",
 
             headers: {
                 "Content-Type": "application/json"
             },
 
-            body : JSON.stringify(data)
+            body: JSON.stringify(data)
         })
-        .then((response)=>{
-            return response.json()
-        })
-        .then((result)=>{
-            // console.log(result);
-            if(result == "address succesfully added"){
-                alert("Order Confirmed succesfully")
-                navigate("/")
-                handleClearCart(user.uid)
-            }
-        })
+            .then((response) => {
+                return response.json()
+            })
+            .then((result) => {
+                // console.log(result);
+                if (result == "address succesfully added") {
+                    alert("Order Confirmed succesfully")
+                    navigate("/")
+                    handleClearCart(user.uid)
+                }
+            })
     }
 
     // console.log(Color.primary);
 
     return (
         <userContext.Provider value={{ handleSubmit, handleLogin, handleAddproduct, HandleAddToCart, isAddToCart, HandleRemoveFromCart, cartItem, handleSetAddress }}>
-            <div className={`h-20 px-10 text-white flex justify-between items-center sticky top-0 z-50`} style={{backgroundColor:Color.primary}}>
+            <div className={`h-20 px-10 text-white flex justify-between items-center sticky top-0 z-50`} style={{ backgroundColor: Color.primary }}>
                 <a href="/"><h1 className='text-3xl  font-bold mt-4'>Erfan</h1></a>
                 <ul className='text-xl flex gap-10 '>
 
                     {
                         user !== null ?
-                            <div className='flex gap-2'>
-                                <li>Welcome {user.displayName}</li>
+                            <div className='flex gap-2 '>
+                                <li className='hidden md:block'>Welcome {user.displayName}</li>
                                 <a href="/signup" onClick={handleLogout}><li><LogoutIcon /></li></a>
                             </div>
                             :
@@ -265,8 +264,8 @@ const AppWrapper = () => {
                     </div>
                 </ul>
             </div>
-            <div className={`h-16 border-t-2 border-black px-10 bg-[${Color.secondary}] pt-4 `} style={{backgroundColor:Color.secondary}}>
-                <ul className='text-xl flex justify-evenly '>
+            <div className={`h-10 border-t-2 border-black hidden md:flex items-center justify-center px-10 bg-[${Color.secondary}]`} style={{ backgroundColor: Color.secondary }}>
+                <ul className='text-lg flex justify-evenly items-center w-full'>
                     <a className='li' href="/"><li>Home</li></a>
                     <a className='li' href="/products"><li>Products</li></a>
                     <a className='li' href="/blog"> <li>Blog</li></a>

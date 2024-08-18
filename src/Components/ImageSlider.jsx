@@ -23,7 +23,7 @@ const ImageSlider = ({ images }) => {
   return (
     <div className="slider">
       <button className="prev flex items-center justify-center p-2 pr-0" onClick={prevSlide} style={{backgroundColor:Color.button}}><ArrowBackIosIcon /></button>
-      <div className="slider-images">
+      <div className="slider-images flex h-[300px] md:h-[700px]">
         {images.map((image, index) => (
           <img
             key={index}

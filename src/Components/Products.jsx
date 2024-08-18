@@ -25,10 +25,10 @@ const Products = () => {
   return (
     <>
       <h1 className='text-center  p-10 text-5xl text-[#1b1a1a] font-semibold'>Featured produts</h1>
-      <div className='container py-10 p-2 flex justify-between gap-10 items-center flex-wrap'>
+      <div className='container py-10 p-10 flex justify-center gap-10 items-center flex-wrap'>
         {
           prodcuts.map((product, index) => {
-            return  <div key={index} className={`p-10 text-center rounded-lg shadow-md shadow-black flex flex-col items-center gap-6`} style={{backgroundColor:Color.cards}}>
+            return  <div key={index} className={`p-10 text-center h-[450px] w-[300px] rounded-lg shadow-md shadow-black flex flex-col items-center gap-6`} style={{backgroundColor:Color.cards}}>
                 <div className='w-[220px] h-[200px] overflow-hidden flex justify-center '>
                   <Link to={`/product/${product.id}`} >
                     <img src={product.file} alt="oops" className='mix-blend-multiply' />

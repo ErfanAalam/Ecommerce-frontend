@@ -8,45 +8,34 @@ const Cart = () => {
     const { cartItem, HandleRemoveFromCart, HandleAddToCart } = useContext(userContext)
 
 
-    const [quantities, setQuantities] = useState(cartItem.reduce((acc, product) => {
-        acc[product.id] = 1;
-        return acc;
-    }, {}));
+    // const [quantities, setQuantities] = useState(cartItem.reduce((acc, product) => {
+    //     acc[product.id] = 1;
+    //     return acc;
+    // }, {}));
 
-    useEffect(() => {
-        const initialQuantities = cartItem.reduce((acc, product) => {
-            acc[product.id] = product.quantity || 1;
-            return acc;
-        }, {});
-        setQuantities(initialQuantities);
-    }, [cartItem]);
+    // useEffect(() => {
+    //     const initialQuantities = cartItem.reduce((acc, product) => {
+    //         acc[product.id] = product.quantity || 1;
+    //         return acc;
+    //     }, {});
+    //     setQuantities(initialQuantities);
+    // }, [cartItem]);
 
     function handleDecrement(e, id) {
         e.preventDefault()
-        if (quantities[id] > 1) {
-            setQuantities(prevQuantities => ({
-                ...prevQuantities,
-                [id]: prevQuantities[id] - 1
-            }));
-            HandleRemoveFromCart(e, id);
-        } else {
-            // If quantity reaches 0, remove the item from the cart
-            setQuantities(prevQuantities => {
-                const newQuantities = { ...prevQuantities };
-                delete newQuantities[id];
-                return newQuantities;
-            });
-            HandleRemoveFromCart(e, id);
-        }
+        
     }
+
+    // console.log(cartItem);
 
     function handleIncrement(e, product) {
         e.preventDefault()
-        setQuantities(prevQuantities => ({
-            ...prevQuantities,
-            [product.id]: prevQuantities[product.id] + 1
-        }));
-        HandleAddToCart(e, product);
+        
+        product.quantity += 1
+
+
+        console.log(product.quantity);
+
     }
 
     let sum = 0
@@ -58,17 +47,17 @@ const Cart = () => {
 
 
     return (<>
-            <h1 className='text-center text-2xl font-bold my-4'>
-                {
-                    cartItem.length == 0 ? "Cart is empty" : "Your Cart"
-                }
-                
-                </h1>
+        <h1 className='text-center text-2xl font-bold my-4'>
+            {
+                cartItem.length == 0 ? "Cart is empty" : "Your Cart"
+            }
+
+        </h1>
         <div className='flex'>
             <div className='w-[60%]'>
                 {
                     cartItem.map((product, index) => {
-                        return <div key={index} className={`relative p-10 m-20 text-center h-96 rounded-lg shadow-md shadow-black flex items-center gap-10`} style={{backgroundColor:Color.cards}}>
+                        return <div key={index} className={`relative p-10 m-20 text-center h-96 rounded-lg shadow-md shadow-black flex items-center gap-10`} style={{ backgroundColor: Color.cards }}>
                             <div className='w-[350px] h-[280px] flex justify-center '>
                                 <img src={product.file} alt="oops" width={"450px"} className='mix-blend-multiply' />
                             </div>
@@ -77,9 +66,9 @@ const Cart = () => {
                                 <h1> Price: {product.price}</h1>
                                 <p>Desc : {product.desc}</p>
                                 <div key={product.id} className='flex gap-6'>
-                                    <p onClick={(e) => handleDecrement(e, product.id)}>-</p>
-                                    <p>{quantities[product.id]}</p>
-                                    <p onClick={(e) => handleIncrement(e, product)}>+</p>
+                                    <button onClick={(e) => handleDecrement(e, product)}>-</button>
+                                    <p>{product.quantity}</p>
+                                    <button onClick={(e) => handleIncrement(e, product)}>+</button>
                                 </div>
                             </div>
                             <div className='absolute top-6 right-6' onClick={(e) => handleDecrement(e, product.id)}>
@@ -101,7 +90,7 @@ const Cart = () => {
                     <hr className='border-black' />
                     <div className='flex justify-evenly items-center'>
                         <p>Sub Total : {sum + 199.99}</p>
-                        <a href="/address"><button className='rounded-lg p-2 ' style={{backgroundColor:Color.button}}>Confirm Order</button></a>
+                        <a href="/address"><button className='rounded-lg p-2 ' style={{ backgroundColor: Color.button }}>Confirm Order</button></a>
                     </div>
                 </div>
             </div>
