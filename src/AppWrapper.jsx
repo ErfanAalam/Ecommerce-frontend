@@ -98,20 +98,30 @@ const AppWrapper = () => {
             .then((userCrendentials) => {
                 const user = userCrendentials.user
                 console.log(userCrendentials);
+                alert("Succesfully login")
                 if (user.uid == adminUid) {
                     navigate("/admin/erfan")
                 } else {
                     navigate("/")
                 }
-                username = user.displayName
+                const username = user.displayName
                 return user
             })
             .catch((error) => {
-                alert("Invalid email or password")
-                const errorCode = error.code;
-                console.log(errorCode);
-                const errorMessage = error.message;
-                console.log(errorMessage);
+                alert("Invalid email or password");
+                console.error("Error code:", error.code);
+                console.error("Error message:", error.message);
+
+                // switch (error.code) {
+                //     case 'auth/user-not-found':
+                //         alert("No user found with this email.");
+                //         break;
+                //     case 'auth/wrong-password':
+                //         alert("Incorrect password.");
+                //         break;
+                //     default:
+                //         alert("An unexpected error occurred. Please try again.");
+                // }
             })
     }
 
@@ -244,7 +254,7 @@ const AppWrapper = () => {
     return (
         <userContext.Provider value={{ handleSubmit, handleLogin, handleAddproduct, HandleAddToCart, isAddToCart, HandleRemoveFromCart, cartItem, handleSetAddress }}>
             <div className={`h-20 px-10 text-white flex justify-between items-center sticky top-0 z-50`} style={{ backgroundColor: Color.primary }}>
-                <a href="/"><h1 className='text-3xl  font-bold mt-4'>Erfan</h1></a>
+                <a href="/"><h1 className='text-3xl  font-bold mt-4'>ClothHub</h1></a>
                 <ul className='text-xl flex gap-10 '>
 
                     {
