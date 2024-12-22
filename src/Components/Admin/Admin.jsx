@@ -4,7 +4,6 @@ import Color from '../Utils/Color'
 
 
 
-
 const Admin = () => {
     const [id, setId] = useState("")
     const [file, setFile] = useState("")
