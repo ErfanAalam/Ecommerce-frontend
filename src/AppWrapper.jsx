@@ -49,7 +49,7 @@ const AppWrapper = () => {
 
   useEffect(() => {
     if (user) {
-      fetch("http://localhost:3000/getCart")
+      fetch("https://ecommerce-backend-7hot.onrender.com/getCart")
         .then((response) => {
           return response.json();
         })
@@ -121,7 +121,7 @@ const AppWrapper = () => {
     console.log(productdata);
     e.preventDefault();
 
-    fetch("http://localhost:3000/addProduct", {
+    fetch("https://ecommerce-backend-7hot.onrender.com/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -146,7 +146,7 @@ const AppWrapper = () => {
       product,
     };
 
-    const response = await fetch("http://localhost:3000/addToCart", {
+    const response = await fetch("https://ecommerce-backend-7hot.onrender.com/addToCart", {
       method: "POST",
 
       headers: {
@@ -178,7 +178,7 @@ const AppWrapper = () => {
       prodId: id,
     };
 
-    fetch("http://localhost:3000/removeFromCart", {
+    fetch("https://ecommerce-backend-7hot.onrender.com/removeFromCart", {
       method: "DELETE",
 
       headers: {
@@ -192,7 +192,7 @@ const AppWrapper = () => {
   }
 
   function handleClearCart(userId) {
-    fetch("http://localhost:3000/removeCart", {
+    fetch("https://ecommerce-backend-7hot.onrender.com/removeCart", {
       method: "DELETE",
 
       headers: {
@@ -214,7 +214,7 @@ const AppWrapper = () => {
       userEmail: user.email,
     };
 
-    fetch("http://localhost:3000/setAddress", {
+    fetch("https://ecommerce-backend-7hot.onrender.com/setAddress", {
       method: "POST",
 
       headers: {

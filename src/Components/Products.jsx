@@ -12,7 +12,7 @@ const Products = () => {
   const { isAddToCart, HandleAddToCart, HandleRemoveFromCart } = useContext(userContext)
 
   useEffect(() => {
-    fetch("http://localhost:3000/getProducts")
+    fetch("https://ecommerce-backend-7hot.onrender.com/getProducts")
       .then((response) => {
         return response.json()
       }).then((result) => {

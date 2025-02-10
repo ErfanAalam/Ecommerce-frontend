@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState({})
 
     useEffect(() => {
-        fetch("http://localhost:3000/getProducts/" + id)
+        fetch("https://ecommerce-backend-7hot.onrender.com/getProducts/" + id)
             .then((response) => {
                 return response.json()
             }).then((result) => {
