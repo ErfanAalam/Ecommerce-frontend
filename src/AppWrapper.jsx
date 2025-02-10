@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import App from "./App.jsx";
 import "./index.css";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
   useNavigate,
