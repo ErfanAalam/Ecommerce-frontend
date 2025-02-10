@@ -1,7 +1,12 @@
 import React, { createContext, useEffect, useState } from "react";
 import App from "./App.jsx";
 import "./index.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Products from "./Components/Products.jsx";
 import Blog from "./Components/Blog.jsx";
 import About from "./Components/About.jsx";
@@ -146,15 +151,18 @@ const AppWrapper = () => {
       product,
     };
 
-    const response = await fetch("https://ecommerce-backend-7hot.onrender.com/addToCart", {
-      method: "POST",
+    const response = await fetch(
+      "https://ecommerce-backend-7hot.onrender.com/addToCart",
+      {
+        method: "POST",
 
-      headers: {
-        "Content-Type": "application/json",
-      },
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      body: JSON.stringify(obj),
-    });
+        body: JSON.stringify(obj),
+      }
+    );
 
     const data = await response.json();
   }
@@ -310,24 +318,23 @@ const AppWrapper = () => {
           </a>
         </ul>
       </div>
-
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/admin" element={<Signup />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route
-          path="/admin/erfan"
-          element={user?.uid === adminUid ? <Admin /> : <NotAdmin />}
-        />
-        <Route path="/address" element={<Address />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/admin" element={<Signup />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/admin/erfan"
+            element={user?.uid === adminUid ? <Admin /> : <NotAdmin />}
+          />
+          <Route path="/address" element={<Address />} />
+        </Routes>
     </userContext.Provider>
   );
 };
